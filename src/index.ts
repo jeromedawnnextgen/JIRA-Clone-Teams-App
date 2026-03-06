@@ -24,6 +24,8 @@ const app = new App({
 
 app.tab("home", path.join(__dirname, "./client"));
 
+app.http.get("/", (_req, res) => res.redirect("/tabs/home"));
+
 app.http.use("/api", express.json());
 createIssueRoutes(app.http as any);
 createSprintRoutes(app.http as any);
