@@ -1,0 +1,43 @@
+{
+	"$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.25/MicrosoftTeams.schema.json",
+	"version": "1.0.0",
+	"manifestVersion": "1.25",
+	"id": "${{TEAMS_APP_ID}}",
+	"name": {
+		"short": "Jira Clone",
+		"full": "Jira Clone - Project Management"
+	},
+	"developer": {
+		"name": "Teams App, Inc.",
+		"websiteUrl": "https://www.example.com",
+		"privacyUrl": "https://www.example.com/privacy",
+		"termsOfUseUrl": "https://www.example.com/termsofuse"
+	},
+	"description": {
+		"short": "Kanban board and sprint planning",
+		"full": "A Jira-style project management app with kanban board, backlog, and sprint planning."
+	},
+	"icons": {
+		"outline": "outline.png",
+		"color": "color.png"
+	},
+	"accentColor": "#FFFFFF",
+	"validDomains": [
+		"${{TAB_DOMAIN}}"
+	],
+	"staticTabs": [
+		{
+			"entityId": "index0",
+			"name": "Home",
+			"contentUrl": "${{TAB_ENDPOINT}}/tabs/home",
+			"websiteUrl": "${{TAB_ENDPOINT}}/tabs/home",
+			"scopes": [
+				"personal",
+				"groupChat"
+			]
+		}
+	],
+	"permissions": [
+		"identity"
+	]
+}

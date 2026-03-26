@@ -1,0 +1,59 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Launch Remote in Teams (Edge)",
+            "type": "msedge",
+            "request": "launch",
+            "runtimeExecutable": "C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe",
+            "url": "https://teams.microsoft.com/l/app/${{TEAMS_APP_ID}}?installAppPackage=true&webjoin=true&${account-hint}",
+            "presentation": {
+                "group": "group 1: Teams",
+                "order": 3
+            },
+            "internalConsoleOptions": "neverOpen"
+        },
+        {
+            "name": "Attach to Frontend in Teams (Edge)",
+            "type": "msedge",
+            "request": "launch",
+            "runtimeExecutable": "C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe",
+            "url": "https://teams.microsoft.com/l/app/${{local:TEAMS_APP_ID}}?installAppPackage=true&webjoin=true&${account-hint}",
+            "cascadeTerminateToConfigurations": [
+                "Attach to Local Service"
+            ],
+            "presentation": {
+                "group": "all",
+                "hidden": true
+            },
+            "internalConsoleOptions": "neverOpen"
+        },
+        {
+            "name": "Attach to Local Service",
+            "type": "node",
+            "request": "attach",
+            "port": 9239,
+            "restart": true,
+            "presentation": {
+                "group": "all",
+                "hidden": true
+            },
+            "internalConsoleOptions": "neverOpen"
+        }
+    ],
+    "compounds": [
+        {
+            "name": "Debug in Teams (Edge)",
+            "configurations": [
+                "Attach to Frontend in Teams (Edge)",
+                "Attach to Local Service"
+            ],
+            "preLaunchTask": "Start App Locally",
+            "presentation": {
+                "group": "group 1: Teams",
+                "order": 1
+            },
+            "stopAll": true
+        }
+    ]
+}
